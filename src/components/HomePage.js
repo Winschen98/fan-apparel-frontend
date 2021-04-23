@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import products from '../resources/products'
 import ProductCard from './ProductCard'
 import axios from 'axios'
 

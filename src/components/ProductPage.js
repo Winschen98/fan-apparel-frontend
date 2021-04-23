@@ -59,7 +59,7 @@ function ProductPage({ match }) {
 						<ListGroup.Item className='checkout-card'>
 							<h5>Currently {product.inStock ? 'In Stock' : 'Out of Stock'}</h5>
 							<Button 
-							disabled={product.inStock == false}
+							disabled={product.inStock === false}
 							className='mt-3 btn-block'>Add</Button>
 						</ListGroup.Item>
 					</ListGroup>
