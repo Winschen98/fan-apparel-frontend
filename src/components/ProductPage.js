@@ -26,7 +26,7 @@ function ProductPage({ match }) {
 				<Col md={5.5}>
 					<Image
 						className='product-image'
-						src={product.src}
+						src={product.image}
 						alt={product.name}
 					/>
 				</Col>
@@ -40,9 +40,13 @@ function ProductPage({ match }) {
 
 						<ListGroup.Item>
 							<h4 className='mb-2'>Product Details:</h4>
-							{product.details.map((info) => (
+
+
+							{/* {product.details.map((info) => (
 								<Col className='mb-1'>{info}</Col>
-							))}
+							))} */}
+
+							
 						</ListGroup.Item>
 
 						<ListGroup.Item>
