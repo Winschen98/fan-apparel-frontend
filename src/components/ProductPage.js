@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import products from '../resources/products';
 import '../CSS/ProductPage.css';
+import axios from 'axios';
 
 function ProductPage({ match }) {
-	const product = products.find((product) => product._id === match.params.id);
+	const [product, setProduct] = useState(null);
+
+	useEffect(() => {
+		async function fetchProduct() {
+			const { data } = await axios.get(`/products/${match.params.id}`);
+			setProduct(data);
+		}
+
+		fetchProduct();
+	}, []);
+
+	if (!product) {
+		return <h2>loading...</h2>;
+	}
 
 	return (
 		<div>
