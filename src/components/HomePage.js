@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import products from '../resources/products'
 import ProductCard from './ProductCard'
+import axios from 'axios'
 
 function Home() {
     // use filter to store newly released items as an array variable
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        async function fetchProducts() {
+            const { data } = await axios.get('http://localhost:8000/products/');
+            setProducts(data)
+        }
+        fetchProducts()
+
+    }, [])
+
 
     return (
         <div>
