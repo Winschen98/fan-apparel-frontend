@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import products from '../resources/products';
 import '../CSS/ProductPage.css';
 import axios from 'axios';
 
