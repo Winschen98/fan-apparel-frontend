@@ -54,8 +54,13 @@ function ProductPage({ match }) {
 							{/* map available sizes */}
 						</ListGroup.Item>
 
+						
+
 						<ListGroup.Item className='checkout-card'>
-							<Button className='mt-2 btn-block'>Add</Button>
+							<h5>Currently {product.inStock ? 'In Stock' : 'Out of Stock'}</h5>
+							<Button 
+							disabled={product.inStock == false}
+							className='mt-3 btn-block'>Add</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Col>
