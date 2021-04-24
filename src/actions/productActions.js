@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // action that makes api call for products
 // redux-thunk for making async request (function within function)
-const listProducts = () => async (dispatch) => {
+export const listProducts = () => async (dispatch) => {
 	try {
 		// initiates reducer
 		dispatch({ type: PRODUCT_LIST_REQUEST });
