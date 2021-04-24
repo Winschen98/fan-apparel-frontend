@@ -17,6 +17,7 @@ function Home() {
 		dispatch(listProducts());
 	}, [dispatch]);
 
+	const newReleases = products.filter(item => item.newRelease)
 
 
 	if (loading) {
@@ -27,9 +28,9 @@ function Home() {
     }
 	return (
 		<div>
-			<h1>New Releases</h1>
+			<h1>New Arrivals</h1>
 			<Row>
-				{products.map((product) => (
+				{newReleases.map((product) => (
 					<Col key={product._id} sm={6} md={6} lg={4} xl={3}>
 						<ProductCard product={product} />
 					</Col>
