@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../CSS/ProductPage.css';
 import axios from 'axios';
+import { listProductInfo } from '../actions/productActions'
+import Loader from './Loader';
 
 function ProductPage({ match }) {
-	const [product, setProduct] = useState(null);
+	const dispatch = useDispatch()
+	const productInfo = useSelector(state => state.productInfo)
+	// get relevant data from productInfo object
+	const { product, loading, error } = productInfo
 
+	// triggers the action and allows state in redux to update
 	useEffect(() => {
-		async function fetchProduct() {
-			const { data } = await axios.get(`/products/${match.params.id}`);
-			setProduct(data);
-		}
+		dispatch(listProductInfo(match.params.id))
 
-		fetchProduct();
-	}, []);
+	}, [dispatch, match]);
 
-	if (!product) {
-		return <h2>loading...</h2>;
+
+
+	if (loading) {
+		return <Loader />;
 	}
-
+	if (error) {
+		return <h2>{error}</h2>;
+	}
 	return (
 		<div>
 			<Row>
@@ -35,7 +42,7 @@ function ProductPage({ match }) {
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
 							<h4>{product.name}</h4>
-							<h5>${product.price}.00</h5>
+							<h5>${product.price}</h5>
 						</ListGroup.Item>
 
 						<ListGroup.Item>
