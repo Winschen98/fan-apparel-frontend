@@ -6,23 +6,23 @@ import {
 	productListReducer,
 	productInfoReducer,
 } from './reducers/productReducers';
-import { checkoutReducer } from './reducers/checkoutReducers';
+import { bagReducer } from './reducers/bagReducers';
 
 // register reducers
 const reducer = combineReducers({
 	productList: productListReducer,
 	productInfo: productInfoReducer,
-	checkout: checkoutReducer,
+	bag: bagReducer,
 });
 
 // parse local storage back to object
-const checkoutItemsFromStorage = localStorage.getItem('checkoutItems')
-	? JSON.parse(localStorage.getItem('checkoutItems'))
+const bagItemsFromStorage = localStorage.getItem('bagItems')
+	? JSON.parse(localStorage.getItem('bagItems'))
 	: [];
 
 // load local storage as state
 const initialState = {
-	checkout: { checkoutItems: checkoutItemsFromStorage },
+	bag: { bagItems: bagItemsFromStorage },
 };
 
 const middleware = [thunk];
