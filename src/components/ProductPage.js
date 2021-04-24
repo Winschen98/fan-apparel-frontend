@@ -20,8 +20,8 @@ function ProductPage({ match, history }) {
 		dispatch(listProductInfo(match.params.id));
 	}, [dispatch, match]);
 
-	function checkoutHandler(){
-		history.push(`/checkout/${match.params.id}?quantity=${quantity}`)
+	function bagHandler(){
+		history.push(`/bag/${match.params.id}?quantity=${quantity}`)
 	}
 
 	if (loading) {
@@ -83,9 +83,9 @@ function ProductPage({ match, history }) {
 							</Col>
 						</ListGroup.Item>
 
-						<ListGroup.Item className='checkout-btn'>
+						<ListGroup.Item className='bag-btn'>
 							<Button disabled={product.inStock < 1} className='mt-3 btn-block'
-							onClick={checkoutHandler}
+							onClick={bagHandler}
 							>
 								Add
 							</Button>
