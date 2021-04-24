@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import products from '../resources/products';
 import '../CSS/ProductPage.css';
+import axios from 'axios';
 
 function ProductPage({ match }) {
-	const product = products.find((product) => product._id === match.params.id);
+	const [product, setProduct] = useState(null);
+
+	useEffect(() => {
+		async function fetchProduct() {
+			const { data } = await axios.get(`/products/${match.params.id}`);
+			setProduct(data);
+		}
+
+		fetchProduct();
+	}, []);
+
+	if (!product) {
+		return <h2>loading...</h2>;
+	}
 
 	return (
 		<div>
@@ -13,7 +26,7 @@ function ProductPage({ match }) {
 				<Col md={5.5}>
 					<Image
 						className='product-image'
-						src={product.src}
+						src={product.image}
 						alt={product.name}
 					/>
 				</Col>
@@ -27,9 +40,13 @@ function ProductPage({ match }) {
 
 						<ListGroup.Item>
 							<h4 className='mb-2'>Product Details:</h4>
-							{product.details.map((info) => (
+
+
+							{/* {product.details.map((info) => (
 								<Col className='mb-1'>{info}</Col>
-							))}
+							))} */}
+
+							
 						</ListGroup.Item>
 
 						<ListGroup.Item>
@@ -37,8 +54,13 @@ function ProductPage({ match }) {
 							{/* map available sizes */}
 						</ListGroup.Item>
 
+						
+
 						<ListGroup.Item className='checkout-card'>
-							<Button className='mt-2 btn-block'>Add</Button>
+							<h5>Currently {product.inStock ? 'In Stock' : 'Out of Stock'}</h5>
+							<Button 
+							disabled={product.inStock === false}
+							className='mt-3 btn-block'>Add</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Col>

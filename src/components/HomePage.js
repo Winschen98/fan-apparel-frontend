@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import products from '../resources/products'
 import ProductCard from './ProductCard'
 import axios from 'axios'
 
@@ -10,7 +9,7 @@ function Home() {
 
     useEffect(() => {
         async function fetchProducts() {
-            const { data } = await axios.get('http://localhost:8000/products/');
+            const { data } = await axios.get('/products/');
             setProducts(data)
         }
         fetchProducts()
