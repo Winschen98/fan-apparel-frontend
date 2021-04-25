@@ -32,7 +32,7 @@ function MaleShoes() {
 
 	return (
 		<div>
-			<h1>New Arrivals</h1>
+			<h1>Mens Shoes</h1>
 			<Row>
 				{maleShoes.map((product) => (
 					<Col key={product._id} sm={6} md={6} lg={4} xl={3}>
