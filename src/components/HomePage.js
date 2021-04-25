@@ -16,16 +16,20 @@ function Home() {
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);
+	
 
-	const newReleases = products.filter(item => item.newRelease)
-
-
+	
+	
 	if (loading) {
 		return <Loader />;
 	}
     if (error){
-        return <h2>{error}</h2>
+		return <h2>{error}</h2>
     }
+
+	// filter for desired products
+	const newReleases = products.filter(item => item.newRelease)
+
 	return (
 		<div>
 			<h1>New Arrivals</h1>

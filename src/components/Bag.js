@@ -35,7 +35,7 @@ function Bag({ match, location, history }) {
 				<h1>Shopping Bag</h1>
 			</Row>
 
-			<Row className='ml-5 mt-3'>
+			<Row className='ml-5 mt-3 pb-3 mb-5' >
 				{bagItems.length === 0 ? (
 					<h2>
 						Your bag is empty,{' '}
