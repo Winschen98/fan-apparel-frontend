@@ -36,6 +36,18 @@ function Header() {
 						</NavDropdown.Item>
 
 						<NavDropdown.Item>
+							<LinkContainer to='/m-jackets'>
+								<Nav.Link>Jackets</Nav.Link>
+							</LinkContainer>
+						</NavDropdown.Item>
+
+						<NavDropdown.Item>
+							<LinkContainer to='/m-hoodies'>
+								<Nav.Link>Sweat Shirts & Hoodies</Nav.Link>
+							</LinkContainer>
+						</NavDropdown.Item>
+
+						<NavDropdown.Item>
 							<LinkContainer to='/m-pants'>
 								<Nav.Link>Pants</Nav.Link>
 							</LinkContainer>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductCard';
+import React, { useEffect } from 'react';
+import ProductCard from '../ProductCard';
 import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { listProducts } from '../actions/productActions';
-import Loader from './Loader';
+import { listProducts } from '../../actions/productActions';
+import Loader from '../Loader';
 
-function HomePage() {
+function MaleShoes() {
 	// use filter to store newly released items as an array variable
 
 	const dispatch = useDispatch();
@@ -16,25 +16,25 @@ function HomePage() {
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);
-	
 
-	
-	
+
 	if (loading) {
 		return <Loader />;
 	}
-    if (error){
-		return <h2>{error}</h2>
-    }
+	if (error) {
+		return <h2>{error}</h2>;
+	}
 
 	// filter for desired products
-	const newReleases = products.filter(item => item.newRelease)
+	const maleShoes = products.filter(
+		(item) => item.gender === 'male' && item.category === 'shoes'
+	);
 
 	return (
 		<div>
 			<h1>New Arrivals</h1>
 			<Row>
-				{newReleases.map((product) => (
+				{maleShoes.map((product) => (
 					<Col key={product._id} sm={6} md={6} lg={4} xl={3}>
 						<ProductCard product={product} />
 					</Col>
@@ -44,4 +44,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default MaleShoes;
