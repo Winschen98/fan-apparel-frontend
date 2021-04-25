@@ -1,4 +1,4 @@
-import { BAG_ADD_ITEM } from '../constants/bagConstants';
+import { BAG_ADD_ITEM, BAG_REMOVE_ITEM } from '../constants/bagConstants';
 
 export const bagReducer = (state = { bagItems: [] }, action) => {
 	switch (action.type) {
@@ -23,6 +23,13 @@ export const bagReducer = (state = { bagItems: [] }, action) => {
 					...state,
 					bagItems: [...state.bagItems, item],
 				};
+			}
+
+		case BAG_REMOVE_ITEM: 
+			return{
+				...state, 
+				// action.payload is id of product to remove
+				bagItems: state.bagItems.filter(bagItem => bagItem.product !== action.payload)
 			}
 
 		default:

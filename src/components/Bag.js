@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Image, Form, Button } from 'react-bootstrap';
-import { addToBag } from '../actions/bagActions';
+import { addToBag, removeFromBag } from '../actions/bagActions';
 
 function Bag({ match, location, history }) {
 	const productId = match.params.id;
@@ -21,7 +21,13 @@ function Bag({ match, location, history }) {
 		}
 	}, [dispatch, productId, quantity]);
 
-	function removeFromBagHandler() {}
+	function removeFromBagHandler(id) {
+		dispatch(removeFromBag(id));
+	}
+
+	function checkoutHandler() {
+		history.push('/login?redirect=checkout');
+	}
 
 	return (
 		<div>
@@ -74,7 +80,7 @@ function Bag({ match, location, history }) {
 												type='button'
 												variant='light'
 												style={{ height: '45px' }}
-												onClick={() => removeFromBagHandler()}>
+												onClick={() => removeFromBagHandler(item.product)}>
 												<i className='fas fa-trash-alt'></i>
 											</Button>
 										</Row>
@@ -102,9 +108,11 @@ function Bag({ match, location, history }) {
 					</Col>
 
 					<Button
-                        variant='light'
+						disabled={bagItems.length === 0}
+						variant='light'
 						className='mt-3'
-						style={{ width: '20em', position: 'absolute', right:'5em'}}>
+						style={{ width: '20em', position: 'absolute', right: '5em' }}
+						onClick={checkoutHandler}>
 						Checkout
 					</Button>
 				</Row>
