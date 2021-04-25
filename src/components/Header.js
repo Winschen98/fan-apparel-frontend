@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Container, Row } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../CSS/Header.css'
 
@@ -40,7 +40,7 @@ function Header() {
 						</NavDropdown>
 
 						<Nav className='mr-auto'>
-							<LinkContainer to='/checkout'>
+							<LinkContainer to='/bag'>
 								<Nav.Link>
 									<i className='fas fa-shopping-bag'></i>
 								</Nav.Link>

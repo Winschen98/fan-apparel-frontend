@@ -2,6 +2,10 @@
     width: 50em;
 }
 
-.checkout-card {
+.bag-btn {
     width: 25em;
+}
+
+.qty-selector{
+    width: 10px;
 }
