@@ -15,13 +15,13 @@ function Header() {
 						src={logo}
 						width='50'
 						height='50'
-						className='d-inline-block align-top'
+						className='d-inline-block align-top ml-3 mr-4'
 						alt='Fan logo'
 					/>
 				</LinkContainer>
 
 				<LinkContainer to='/'>
-					<Navbar.Brand>Fan-Apparel</Navbar.Brand>
+					<Navbar.Brand className='app-name mr-5'>Fan Apparel</Navbar.Brand>
 				</LinkContainer>
 
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -61,7 +61,7 @@ function Header() {
 
 						<NavDropdown.Divider />
 						<NavDropdown.Item>
-							<Nav.Link>On Sale</Nav.Link>
+							<Nav.Link style={{ color: 'red' }}>Sale</Nav.Link>
 						</NavDropdown.Item>
 					</NavDropdown>
 
@@ -87,7 +87,7 @@ function Header() {
 
 						<NavDropdown.Divider />
 						<NavDropdown.Item>
-							<Nav.Link>On Sale</Nav.Link>
+							<Nav.Link style={{ color: 'red' }}> Sale</Nav.Link>
 						</NavDropdown.Item>
 					</NavDropdown>
 
