@@ -25,12 +25,14 @@ export const bagReducer = (state = { bagItems: [] }, action) => {
 				};
 			}
 
-		case BAG_REMOVE_ITEM: 
-			return{
-				...state, 
+		case BAG_REMOVE_ITEM:
+			return {
+				...state,
 				// action.payload is id of product to remove
-				bagItems: state.bagItems.filter(bagItem => bagItem.product !== action.payload)
-			}
+				bagItems: state.bagItems.filter(
+					(bagItem) => bagItem.product !== action.payload
+				),
+			};
 
 		default:
 			return state;

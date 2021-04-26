@@ -1,0 +1,10 @@
+.display {
+  display: grid; 
+  grid-template-rows: .1fr 10fr .1fr;
+
+  overflow: scroll;
+}
+
+.footer {
+    grid-row: 3;
+}
