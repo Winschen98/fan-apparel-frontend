@@ -3,13 +3,20 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../CSS/Header.css';
 
+// import { useDispatch, useSelector } from 'react-redux' 
+// import { login } from '../actions/userActions'
+
 import logo from '../resources/images/fan-logo.gif';
 
+
+
 function Header() {
+
+
+
 	return (
 		<header>
 			<Navbar bg='light' expand='lg'>
-				{/* <Container> */}
 				<LinkContainer to='/' className='logo'>
 					<img
 						src={logo}
@@ -68,13 +75,25 @@ function Header() {
 					{/* female dropdown menu */}
 					<NavDropdown title='WOMEN' id='basic-nav-dropdown'>
 						<NavDropdown.Item>
-							<LinkContainer to='/f-shirts'>
+							<LinkContainer to='/m-shirts'>
 								<Nav.Link>Shirts</Nav.Link>
 							</LinkContainer>
 						</NavDropdown.Item>
 
 						<NavDropdown.Item>
-							<LinkContainer to='/f-pants'>
+							<LinkContainer to='/f-bags'>
+								<Nav.Link>Bags</Nav.Link>
+							</LinkContainer>
+						</NavDropdown.Item>
+
+						<NavDropdown.Item>
+							<LinkContainer to='/f-jackets'>
+								<Nav.Link>Jackets</Nav.Link>
+							</LinkContainer>
+						</NavDropdown.Item>
+
+						<NavDropdown.Item>
+							<LinkContainer to='/m-pants'>
 								<Nav.Link>Pants</Nav.Link>
 							</LinkContainer>
 						</NavDropdown.Item>
@@ -105,7 +124,6 @@ function Header() {
 						</LinkContainer>
 					</Nav>
 				</Navbar.Collapse>
-				{/* </Container> */}
 			</Navbar>
 		</header>
 	);

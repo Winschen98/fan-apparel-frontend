@@ -33,7 +33,7 @@ export const login = (email, password) => async (dispatch) => {
 		});
 
 		// store user auth/token in local storage
-		localStorage.setItem('userInfo', JSON.stringify(data));
+		localStorage.setItem('userCredentials', JSON.stringify(data));
 	} catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
