@@ -20,7 +20,7 @@ const reducer = combineReducers({
 // parse local storage back to object and load into state
 const userCredentialsFromStorage = localStorage.getItem('userCredentials')
 	? JSON.parse(localStorage.getItem('userCredentials'))
-	: [];
+	: null;
 
 
 const bagItemsFromStorage = localStorage.getItem('bagItems')

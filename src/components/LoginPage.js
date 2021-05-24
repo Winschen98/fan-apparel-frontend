@@ -6,9 +6,11 @@ import Loader from '../components/Loader';
 import { login } from '../actions/userActions';
 import FormContainer from '../components/FormContainer';
 
-function LoginPage({ history, redirect}) {
+function LoginPage({ location, history }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	const redirect = location.search ? location.search.split('=')[1] : '/'
 
 	const dispatch = useDispatch();
 
@@ -63,7 +65,7 @@ function LoginPage({ history, redirect}) {
 			<Row className='py-3'>
 				<Col>
 					Not a member? {'  '}
-					<Link to='/register'>Sign Up</Link>
+					<Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Sign Up</Link>
 				</Col>
 			</Row>
 		</FormContainer>

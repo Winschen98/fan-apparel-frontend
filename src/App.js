@@ -16,7 +16,7 @@ import MaleHoodies from './components/apparel-pages/MaleHoodies';
 import MalePants from './components/apparel-pages/MalePants';
 import FemaleBag from './components/apparel-pages/FemaleBag';
 import FemaleJackets from './components/apparel-pages/FemaleJackets';
-import FemaleShoes from './components/apparel-pages/FemaleShoes';
+import FemaleShoes from './components/apparel-pages/FemaleShoes'; 
 
 
 
