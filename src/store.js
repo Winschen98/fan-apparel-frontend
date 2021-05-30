@@ -7,7 +7,7 @@ import {
 	productInfoReducer,
 } from './reducers/productReducers';
 import { bagReducer } from './reducers/bagReducers';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import { userLoginReducer, userRegisterReducer, userProfileReducer } from './reducers/userReducer';
 
 // register reducers
 const reducer = combineReducers({
@@ -16,6 +16,7 @@ const reducer = combineReducers({
 	bag: bagReducer,
 	userRegister: userRegisterReducer,
 	userLogin: userLoginReducer,
+	userProfile: userProfileReducer,
 });
 
 // parse local storage back to object and load into state
