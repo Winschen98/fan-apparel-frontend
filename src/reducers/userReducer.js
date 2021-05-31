@@ -9,10 +9,14 @@ import {
 	USER_PROFILE_REQUEST,
 	USER_PROFILE_SUCCESS,
 	USER_PROFILE_FAIL,
+	USER_PROFILE_RESET,
+	USER_UPDATE_PROFILE_REQUEST,
+	USER_UPDATE_PROFILE_SUCCESS,
+	USER_UPDATE_PROFILE_FAIL,
+	USER_UPDATE_PROFILE_RESET,
 } from '../constants/userConstants';
 
-
-export const userLoginReducer = (state = {  }, action) => {
+export const userLoginReducer = (state = {}, action) => {
 	// depending on action type set the case operation
 	switch (action.type) {
 		case USER_LOGIN_REQUEST:
@@ -24,16 +28,15 @@ export const userLoginReducer = (state = {  }, action) => {
 		case USER_LOGIN_FAIL:
 			return { loading: false, error: action.payload };
 
-        // reset state if logged out
-        case USER_LOGOUT:
-            return {}
+		// reset state if logged out
+		case USER_LOGOUT:
+			return {};
 
 		// if switch case does not match return a default value (initial state):
 		default:
 			return state;
 	}
 };
-
 
 export const userRegisterReducer = (state = {}, action) => {
 	// depending on action type set the case operation
@@ -57,8 +60,7 @@ export const userRegisterReducer = (state = {}, action) => {
 	}
 };
 
-export const userProfileReducer = (state = {user: {}}, action) => {
-
+export const userProfileReducer = (state = { user: {} }, action) => {
 	switch (action.type) {
 		// take initial state using spread operator
 		case USER_PROFILE_REQUEST:
@@ -69,6 +71,31 @@ export const userProfileReducer = (state = {user: {}}, action) => {
 
 		case USER_PROFILE_FAIL:
 			return { loading: false, error: action.payload };
+
+		// used to reset the profile when logging out
+		case USER_PROFILE_RESET:
+			return { user: {} };
+
+		default:
+			return state;
+	}
+};
+
+export const userUpdateProfileReducer = (state = {}, action) => {
+	switch (action.type) {
+		case USER_UPDATE_PROFILE_REQUEST:
+			return { loading: true };
+
+		// add success to output message whenever profile is udpated
+		case USER_UPDATE_PROFILE_SUCCESS:
+			return { loading: false, success: true, userCredentials: action.payload };
+
+		case USER_UPDATE_PROFILE_FAIL:
+			return { loading: false, error: action.payload };
+
+		// reset the past profile part of state after update
+		case USER_UPDATE_PROFILE_RESET:
+			return {};
 
 		default:
 			return state;

@@ -9,6 +9,11 @@ import {
 	USER_PROFILE_REQUEST,
 	USER_PROFILE_SUCCESS,
 	USER_PROFILE_FAIL,
+	USER_PROFILE_RESET,
+	USER_UPDATE_PROFILE_REQUEST,
+	USER_UPDATE_PROFILE_SUCCESS,
+	USER_UPDATE_PROFILE_FAIL,
+	USER_UPDATE_PROFILE_RESET,
 } from '../constants/userConstants';
 import axios from 'axios';
 
@@ -47,12 +52,14 @@ export const login = (email, password) => async (dispatch) => {
                 ? error.response.data.detail
                 : error.message,
         })
+
     }
 };
 
 export const logout = () => (dispatch) => {
 	localStorage.removeItem('userCredentials')
-	dispatch({ type: USER_LOGOUT })
+	dispatch({ type: USER_LOGOUT });
+	dispatch({ type: USER_PROFILE_RESET });
 }
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -125,6 +132,50 @@ export const getUserProfile = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: USER_PROFILE_FAIL,
+			payload:
+				error.response && error.response.data.detail
+					? error.response.data.detail
+					: error.message,
+		});
+	}
+};
+
+
+export const updateUserProfile = (user) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: USER_UPDATE_PROFILE_REQUEST,
+		});
+
+		const {
+			userLogin: { userCredentials },
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${userCredentials.token}`,
+			},
+		};
+
+		const { data } = await axios.put(`/users/profile/update/`, user, config);
+
+		dispatch({
+			type: USER_UPDATE_PROFILE_SUCCESS,
+			payload: data
+		});
+
+		// log in with new credentials after update
+		dispatch({
+			type: USER_LOGIN_SUCCESS,
+			payload: data,
+		});
+
+		localStorage.setItem('userCredentials', JSON.stringify(data));
+
+	} catch (error) {
+		dispatch({
+			type: USER_UPDATE_PROFILE_FAIL,
 			payload:
 				error.response && error.response.data.detail
 					? error.response.data.detail

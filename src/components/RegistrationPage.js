@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-import { register } from '../actions/userActions'
+import { register } from '../actions/userActions';
 
 function RegistrationPage({ location, history }) {
 	const [name, setName] = useState('');
@@ -22,10 +22,9 @@ function RegistrationPage({ location, history }) {
 
 		if (password !== confirmPassword) {
 			setMessage('Passwords do not match');
-		}else{
+		} else {
 			dispatch(register(name, email, password));
 		}
-		
 	}
 
 	const userLogin = useSelector((state) => state.userLogin);
@@ -43,9 +42,9 @@ function RegistrationPage({ location, history }) {
 	return (
 		<FormContainer>
 			<h1 className='mt-4'>Sign Up</h1>
-			
+
 			{message && <h6 style={{ color: 'red' }}>{message}</h6>}
-			
+
 			<Form onSubmit={registrationHandler}>
 				<Form.Group controlId='name'>
 					<Form.Label>Name</Form.Label>
@@ -87,23 +86,23 @@ function RegistrationPage({ location, history }) {
 						placeholder='Re-Enter Password'
 						value={confirmPassword}
 						onChange={(event) =>
-						setConfirmPassword(event.target.value)}
-					></Form.Control>
+							setConfirmPassword(event.target.value)
+						}></Form.Control>
 				</Form.Group>
 
 				<Button type='submit' variant='primary'>
 					Sign Up
 				</Button>
-
-				<Row className='py-3'>
-					<Col>
-						Already a member? {'  '}
-						<Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-							Sign In
-						</Link>
-					</Col>
-				</Row>
 			</Form>
+
+			<Row className='py-3'>
+				<Col>
+					Already a member? {'  '}
+					<Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+						Sign In
+					</Link>
+				</Col>
+			</Row>
 		</FormContainer>
 	);
 }
