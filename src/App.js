@@ -7,6 +7,7 @@ import ProductPage from './components/ProductPage'
 import Bag from './components/Bag';
 import LoginPage from './components/LoginPage'
 import RegistrationPage from './components/RegistrationPage';
+import ProfilePage from './components/ProfilePage';
 
 // apparel-pages
 import MaleShirts from './components/apparel-pages/MaleShirts'
@@ -16,7 +17,7 @@ import MaleHoodies from './components/apparel-pages/MaleHoodies';
 import MalePants from './components/apparel-pages/MalePants';
 import FemaleBag from './components/apparel-pages/FemaleBag';
 import FemaleJackets from './components/apparel-pages/FemaleJackets';
-import FemaleShoes from './components/apparel-pages/FemaleShoes';
+import FemaleShoes from './components/apparel-pages/FemaleShoes'; 
 
 
 
@@ -28,6 +29,7 @@ function App() {
 			<Route path='/' exact component={HomePage} />
 			<Route path='/login' component={LoginPage} />
 			<Route path='/register' component={RegistrationPage} />
+			<Route path='/profile' component={ProfilePage} />
 			<Route path='/product/:id' component={ProductPage} />
 			<Route path='/bag/:id?' component={Bag} />
 

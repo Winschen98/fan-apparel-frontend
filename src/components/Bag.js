@@ -53,14 +53,14 @@ function Bag({ match, location, history }) {
 										<Image src={item.image} alt={item.name} fluid />
 									</Col>
 
-									<Col sm={8} md={6} className='mt-3'>
+									<Col sm={3} md={7} className='mt-3'>
 										<Link to={`/product/${item.product}`}>
 											<h3>{item.name}</h3>
 										</Link>
 
 										<h4 className='ml-4 mt-3'>${item.price}</h4>
 
-										<Row className='ml-4 mt-2' sm={5} md={6}>
+										<Row className='ml-4 mt-2' sm={2} md={4}>
 											<Form.Control
 												as='select'
 												value={item.quantity}
@@ -77,6 +77,7 @@ function Bag({ match, location, history }) {
 											</Form.Control>
 
 											<Button
+												className='ml-1'
 												type='button'
 												variant='light'
 												style={{ height: '45px' }}

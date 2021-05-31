@@ -1,18 +1,24 @@
+import '../CSS/Header.css';
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import '../CSS/Header.css';
+import {logout} from '../actions/userActions'
 
-// import { useDispatch, useSelector } from 'react-redux' 
+
 // import { login } from '../actions/userActions'
 
 import logo from '../resources/images/fan-logo.gif';
 
-
-
 function Header() {
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userCredentials } = userLogin;
 
-
+	const dispatch = useDispatch() 
+	
+	const logoutHandler = () => {
+		dispatch(logout())
+	}
 
 	return (
 		<header>
@@ -117,11 +123,23 @@ function Header() {
 							</Nav.Link>
 						</LinkContainer>
 
-						<LinkContainer to='/login'>
-							<Nav.Link>
-								<i className='fas fa-user'></i>
-							</Nav.Link>
-						</LinkContainer>
+						{userCredentials ? (
+							<NavDropdown title={`Welcome, ${userCredentials.name}`} id='username'>
+								<LinkContainer to='/profile'>
+									<NavDropdown.Item>Profile</NavDropdown.Item>
+								</LinkContainer>
+
+									<NavDropdown.Item onClick={logoutHandler}>
+										Logout
+									</NavDropdown.Item>
+							</NavDropdown>
+						) : (
+							<LinkContainer to='/login'>
+								<Nav.Link>
+									<i className='fas fa-user'></i>
+								</Nav.Link>
+							</LinkContainer>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
