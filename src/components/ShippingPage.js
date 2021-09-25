@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
+import { saveShippingAddress } from '../actions/bagActions'
 
 function ShippingPage({history}) {
 
     const bag = useSelector(state => state.bag)
     const {shippingAddress} = bag
+
+    const dispatch = useDispatch()
 
     const [address, setAddress] = useState(shippingAddress.address);
     const [city, setCity] = useState(shippingAddress.City);
@@ -15,7 +18,7 @@ function ShippingPage({history}) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('Submitted');
+        dispatch(saveShippingAddress({address, city, postalCode, country}));
     }
 
 	return(
