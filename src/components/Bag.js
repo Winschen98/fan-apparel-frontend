@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Image, Form, Button } from 'react-bootstrap';
@@ -26,7 +26,7 @@ function Bag({ match, location, history }) {
 	}
 
 	function checkoutHandler() {
-		history.push('/login?redirect=checkout');
+		history.push('/login?redirect=shipping');
 	}
 
 	return (
@@ -114,7 +114,7 @@ function Bag({ match, location, history }) {
 						className='mt-3'
 						style={{ width: '20em', position: 'absolute', right: '5em' }}
 						onClick={checkoutHandler}>
-						Checkout
+						Shipping
 					</Button>
 				</Row>
 			</ListGroup>
