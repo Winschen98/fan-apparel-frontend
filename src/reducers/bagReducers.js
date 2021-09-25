@@ -1,6 +1,6 @@
-import { BAG_ADD_ITEM, BAG_REMOVE_ITEM } from '../constants/bagConstants';
+import { BAG_ADD_ITEM, BAG_REMOVE_ITEM, BAG_SAVE_SHIPPING_ADDRESS } from '../constants/bagConstants';
 
-export const bagReducer = (state = { bagItems: [] }, action) => {
+export const bagReducer = (state = { bagItems: [], shippingAddress: {} }, action) => {
 	switch (action.type) {
 		// put in bag if product in action.payload is in bagItem array
 		case BAG_ADD_ITEM:
@@ -34,6 +34,12 @@ export const bagReducer = (state = { bagItems: [] }, action) => {
 				),
 			};
 
+		case BAG_SAVE_SHIPPING_ADDRESS: 
+			return{
+				...state, 
+				shippingAddress: action.payload
+			}
+			
 		default:
 			return state;
 	}

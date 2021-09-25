@@ -29,9 +29,16 @@ const bagItemsFromStorage = localStorage.getItem('bagItems')
 	? JSON.parse(localStorage.getItem('bagItems'))
 	: [];
 
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
+	? JSON.parse(localStorage.getItem('shippingAddress'))
+	: {};
+
 // load local storage as state
 const initialState = {
-	bag: { bagItems: bagItemsFromStorage },
+	bag: { 
+		bagItems: bagItemsFromStorage, 
+		shippingAddress: shippingAddressFromStorage,
+	},
 	userLogin: { userCredentials: userCredentialsFromStorage },
 };
 

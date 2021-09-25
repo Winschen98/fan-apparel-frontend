@@ -38,6 +38,7 @@ function HomePage() {
 					<Col key={product._id} sm={6} md={6} lg={4} xl={3}>
 						<ProductCard product={product} />
 					</Col>
+					
 				))}
 			</Row>
 		</div>
