@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
-import { saveShippingAddress } from '../actions/bagActions'
+import { saveShippingAddress } from '../actions/bagActions';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 function ShippingPage({history}) {
 
@@ -24,6 +25,7 @@ function ShippingPage({history}) {
 
 	return(
         <FormContainer>
+            <CheckoutSteps />
             <h1>Shipping</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='address'>
@@ -44,7 +46,7 @@ function ShippingPage({history}) {
 						required
 						type='text'
 						placeholder='Enter City'
-                        // address should not  be null value
+                        // should not  be null value
 						value={city ? city : ""}
 						onChange={(event) => setCity(event.target.value)}>
                     </Form.Control>
@@ -56,7 +58,7 @@ function ShippingPage({history}) {
 						required
 						type='text'
 						placeholder='Enter Postal Code'
-                        // address should not  be null value
+                        // should not  be null value
 						value={postalCode ? postalCode : ""}
 						onChange={(event) => setPostalCode(event.target.value)}>
                     </Form.Control>
@@ -68,7 +70,7 @@ function ShippingPage({history}) {
 						required
 						type='text'
 						placeholder='Enter Country'
-                        // address should not  be null value
+                        // should not  be null value
 						value={country ? country : ""}
 						onChange={(event) => setCountry(event.target.value)}>
                     </Form.Control>
