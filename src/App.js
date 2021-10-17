@@ -10,6 +10,7 @@ import RegistrationPage from './components/RegistrationPage';
 import ProfilePage from './components/ProfilePage';
 import ShippingPage from './components/ShippingPage';
 import PaymentPage from './components/PaymentPage';
+import OrderPage from './components/OrderPage';
 
 
 
@@ -39,6 +40,8 @@ function App() {
 			<Route path='/bag/:id?' component={Bag} />
 			<Route path='/shipping' component={ShippingPage} />
 			<Route path='/payment' component={PaymentPage} />
+			<Route path='/order' component={OrderPage} />
+
 
 			{/* Specific apparel pages */}
 			<Route path='/m-shirts' component={MaleShirts} />

@@ -11,7 +11,7 @@ function PaymentPage({ history }) {
 
     const bag = useSelector(state => state.bag)
     const {shippingAddress} = bag
-   
+    // default payment method is PayPal
     const [paymentMethod, setPaymentMethod] = useState('PayPal')
     
     const dispatch = useDispatch()
