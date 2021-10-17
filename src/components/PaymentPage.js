@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Col, Form, Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
-// import { savePaymentMethod } from '../actions/bagActions';
+import { savePaymentMethod } from '../actions/bagActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 
@@ -18,7 +18,7 @@ function PaymentPage({ history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        // dispatch(savePaymentMethod(paymentMethod))
+        dispatch(savePaymentMethod(paymentMethod))
         history.push('/order')
     }
 
