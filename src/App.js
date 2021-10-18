@@ -8,7 +8,11 @@ import Bag from './components/Bag';
 import LoginPage from './components/LoginPage'
 import RegistrationPage from './components/RegistrationPage';
 import ProfilePage from './components/ProfilePage';
-import ShippingPage from './components/ShippingPage'
+import ShippingPage from './components/ShippingPage';
+import PaymentPage from './components/PaymentPage';
+import OrderPage from './components/OrderPage';
+
+
 
 // apparel-pages
 import MaleShirts from './components/apparel-pages/MaleShirts'
@@ -25,6 +29,7 @@ import FemaleShoes from './components/apparel-pages/FemaleShoes';
 function App() {
 	return (
 		<div className='display'>
+			
 			<Header />
 
 			<Route path='/' exact component={HomePage} />
@@ -34,6 +39,9 @@ function App() {
 			<Route path='/product/:id' component={ProductPage} />
 			<Route path='/bag/:id?' component={Bag} />
 			<Route path='/shipping' component={ShippingPage} />
+			<Route path='/payment' component={PaymentPage} />
+			<Route path='/order' component={OrderPage} />
+
 
 			{/* Specific apparel pages */}
 			<Route path='/m-shirts' component={MaleShirts} />

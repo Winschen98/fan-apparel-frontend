@@ -1,4 +1,9 @@
-import { BAG_ADD_ITEM, BAG_REMOVE_ITEM, BAG_SAVE_SHIPPING_ADDRESS } from '../constants/bagConstants';
+import {
+	BAG_ADD_ITEM,
+	BAG_REMOVE_ITEM,
+	BAG_SAVE_SHIPPING_ADDRESS,
+	BAG_SAVE_PAYMENT_METHOD,
+} from '../constants/bagConstants';
 
 export const bagReducer = (state = { bagItems: [], shippingAddress: {} }, action) => {
 	switch (action.type) {
@@ -38,6 +43,12 @@ export const bagReducer = (state = { bagItems: [], shippingAddress: {} }, action
 			return{
 				...state, 
 				shippingAddress: action.payload
+			}
+
+		case BAG_SAVE_PAYMENT_METHOD: 
+			return{
+				...state,
+				paymentMethod: action.payload 
 			}
 			
 		default:
