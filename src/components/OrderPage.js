@@ -9,7 +9,12 @@ function OrderPage() {
 
     //set new calculated attributes to bag
     bag.subTotal = bag.bagItems.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2);
-    bag.shippingPrice = bag.subTotal > 200 ? 'Free' : '$9.99'
+    bag.shippingPrice = bag.subTotal >= 200 ? 0 : 9.99;
+    bag.taxPrice = Number((0.08875) * bag.subTotal).toFixed(2);
+    
+    console.log(bag.taxPrice)
+
+    bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice)).toFixed(2);
 
     const submitOrder = () => {
         console.log('order submitted')
@@ -96,7 +101,10 @@ function OrderPage() {
                         <ListGroup.Item>
                             <Row> 
                                 <Col>Shipping:</Col>
-                                <Col>{bag.shippingPrice}</Col>  
+                                <Col>{bag.shippingPrice == 0 ? 
+                                'Free' : 
+                                '$9.99'
+                                }</Col>  
                             </Row>
                         </ListGroup.Item>
 
