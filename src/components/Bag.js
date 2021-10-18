@@ -38,9 +38,9 @@ function Bag({ match, location, history }) {
 			<Row className='ml-5 mt-3'>
 				{bagItems.length === 0 ? (
 					<h2>
-						Your bag is empty,{' '}
+						Your bag is empty...{' '}
 						<Link to='/' style={{ color: '#92CEF6' }}>
-							Continue Shopping
+							Continue Shopping?
 						</Link>
 					</h2>
 				) : (
@@ -114,7 +114,7 @@ function Bag({ match, location, history }) {
 						className='mt-3'
 						style={{ width: '20em', position: 'absolute', right: '5em' }}
 						onClick={checkoutHandler}>
-						Shipping
+						Continue to Shipping
 					</Button>
 				</Row>
 			</ListGroup>
