@@ -4,6 +4,9 @@ import { Button, Row, Col, ListGroup, Card, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
 
+
+// CURRENT TASK: 
+// fix total cost so that it adds the shipping price if subtotal is less than 200
 function OrderPage() { 
     const bag = useSelector(state => state.bag)
 
@@ -11,10 +14,8 @@ function OrderPage() {
     bag.subTotal = bag.bagItems.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2);
     bag.shippingPrice = bag.subTotal >= 200 ? 0 : 9.99;
     bag.taxPrice = Number((0.08875) * bag.subTotal).toFixed(2);
-    
-    console.log(bag.taxPrice)
 
-    bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice)).toFixed(2);
+    bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice) + parseFloat(bag.shippingPrice)).toFixed(2);
 
     const submitOrder = () => {
         console.log('order submitted')
