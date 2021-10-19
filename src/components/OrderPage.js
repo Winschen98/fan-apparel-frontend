@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import { Button, Row, Col, ListGroup, Card, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
+import {createOrder } from '../actions/orderActions';
 
 
-// CURRENT TASK: 
-// fix total cost so that it adds the shipping price if subtotal is less than 200
-function OrderPage() { 
+function OrderPage({history}) { 
+    
+    const dispatch = useDispatch()
+
+    const orderCreate = useSelector(state => state.orderCreate)
+    const { order, error, success } = orderCreate
+
     const bag = useSelector(state => state.bag)
 
     //set new calculated attributes to bag
@@ -17,8 +22,23 @@ function OrderPage() {
 
     bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice) + parseFloat(bag.shippingPrice)).toFixed(2);
 
+    useEffect(() => {
+        if (success){
+            history.push(`/order/${order._id}`)
+        }
+    }, [success, history]) 
+
     const submitOrder = () => {
-        console.log('order submitted')
+        dispatch(createOrder({
+            orderItems: bag.bagItems, 
+            paymentMethod: bag.paymentMethod, 
+            shippingAddress: bag.shippingAddress,
+            // subTotal may not be needed 
+            subTotal: bag.subTotal,
+            shippingPrice: bag.shippingPrice, 
+            taxPrice: bag.taxPrice, 
+            totalPrice: bag.totalPrice, 
+        }))
     }
 
     return (
@@ -114,6 +134,11 @@ function OrderPage() {
                                 <Col>Total:</Col>
                                 <Col>${bag.totalPrice}</Col>  
                             </Row>
+                        </ListGroup.Item>
+
+                        {/* if order fails to be placed: display error message */}
+                        <ListGroup.Item>
+                            {error && <h2>{error}</h2>}
                         </ListGroup.Item>
 
                         <ListGroup.Item>
