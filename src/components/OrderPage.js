@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button, Row, Col, ListGroup, Card, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
-import {createOrder } from '../actions/orderActions';
+import { createOrder } from '../actions/orderActions';
 
 
-function OrderPage({history}) { 
+function OrderPage({ history }) { 
     
     const dispatch = useDispatch()
 
