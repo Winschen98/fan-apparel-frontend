@@ -4,6 +4,7 @@ import { Button, Row, Col, ListGroup, Card, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 
 
 function OrderPage({ history }) { 
@@ -19,7 +20,6 @@ function OrderPage({ history }) {
     bag.subTotal = bag.bagItems.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2);
     bag.shippingPrice = bag.subTotal >= 200 ? 0 : 9.99;
     bag.taxPrice = Number((0.08875) * bag.subTotal).toFixed(2);
-
     bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice) + parseFloat(bag.shippingPrice)).toFixed(2);
 
     // If the payment method gets reset from refreshing
@@ -29,7 +29,8 @@ function OrderPage({ history }) {
 
     useEffect(() => {
         if (success){
-            history.push(`/order/${order._id}`)
+            history.push(`/view-order/${order._id}`)
+            dispatch({ type: ORDER_CREATE_RESET})
         }
     }, [success, history]) 
 
