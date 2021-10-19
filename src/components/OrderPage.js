@@ -143,7 +143,7 @@ function OrderPage({history}) {
 
                         {/* if order fails to be placed: display error message */}
                         <ListGroup.Item>
-                            {error && <h2>{error}</h2>}
+                            {error && <h4 style={{ color: 'red' }}>ERROR: {error}</h4>}
                         </ListGroup.Item>
 
                         <ListGroup.Item>
