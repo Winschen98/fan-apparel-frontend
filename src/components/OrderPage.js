@@ -22,6 +22,11 @@ function OrderPage({history}) {
 
     bag.totalPrice = (parseFloat(bag.subTotal) + parseFloat(bag.taxPrice) + parseFloat(bag.shippingPrice)).toFixed(2);
 
+    // If the payment method gets reset from refreshing
+    if (!bag.paymentMethod){
+        history.push('/payment')
+    }
+
     useEffect(() => {
         if (success){
             history.push(`/order/${order._id}`)
